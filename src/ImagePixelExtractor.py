@@ -102,5 +102,14 @@ def _extract_pixel_values_from_directory_high_mem(directory_path, max_x=512, max
 
 
 def get_full_image_array(directory_path, max_x=512, max_y=512):
+    """
+    Get a full image array from a directory of images, resizing them to max_x and max_y.
+
+    :param directory_path: Path to the directory containing images.
+    :param max_x: Maximum width of the images.
+    :param max_y: Maximum height of the images.
+    """
     tab = extract_pixel_values_from_directory(directory_path, max_x, max_y, low_mem=False)
     return tab.transpose(1,2,0)
+
+
