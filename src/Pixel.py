@@ -21,12 +21,12 @@ class Pixel:
     def _fill_law_params(self):
         """
         Fill the parameters for the statistical law.
-        This method should be overridden by subclasses to provide specific parameters.
         """
         shap = Pixel.shapiro_wilk_test(self.tab)
         if (shap[1] < 0.05):
             # normal distribution
             self.mu, self.sigma = sp.stats.norm.fit(self.tab)
+            self.sigma = 0.7 * self.sigma
         elif(shap[1] >= 0.05):
             # uniform distribution
             self.mu = min(self.tab)
